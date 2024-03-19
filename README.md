@@ -4,8 +4,11 @@
 
 [Go to Progress of the Project](#progress)
 
-
 [Go to Steps of the Project](#steps)
+
+[Go to First step - Dataset](#dataset)
+
+
 
 <h2 id="aim">
 Aim
@@ -25,23 +28,33 @@ This project aims to create a proficient English to Telugu translation system us
 Steps
 </h2>
 
-### 1. Dataset
+<h3 id="dataset">
+Dataset
+</h3>
 
 https://github.com/himanshudce/Indian-Language-Dataset  (It has huge data for low resourced languages like Tamil, Malayalam, Telugu or Bengali)
 
-### 2. Datacleaning
+<h3 id="datacleaning">
+Datacleaning
+</h3>
 
 1. Converted all contracted words like to wont,cant to natural form (would not, can not)
 2. Converted all the text into lower letters in english input as for example word Pineapple and pineapple mean the same
 3. Removed these characters: {'$', ')', '?', '"', '’', '.',  '°', '!', ';', '/', "'", '€', '%', ':', ',', '('}
 4. Removed all the spacial characters: except space ' '
 
-### 3. Creating Vocab file from our corpus
+<h3 id="vocabfile">
+Creating Vocab file from our corpus
+</h3> 
 
 Now by the above mentioned preprocessing we create a vocab file from our dataset
 
-### 4. Custom tokenizer (BERT in our case)
-#### Bert Tokeniser ( Bidirectional Encoder Representations )
+<h3 id="custom">
+Custom tokenizer (BERT in our case)
+</h3>  
+<h4 id="bert">
+ Bert Tokeniser ( Bidirectional Encoder Representations )
+</h4>  
 
 Traditional language models process text sequentially, either from left to right or right to left. This method limits the model’s awareness to the immediate context preceding the target word. BERT uses a bi-directional approach considering both the left and right context of words in a sentence, instead of analyzing the text sequentially, BERT looks at all the words in a sentence simultaneously
 
@@ -119,9 +132,16 @@ class CustomTokenizer(tf.Module):
 
 **Helper Function**s: Lastly, the code includes helper functions to retrieve metadata about the tokenizer. These functions allow users to obtain information such as the size of the vocabulary, the path to the vocabulary file, and the reserved tokens.
 
-### 5. Transformer model 
+<h3 id="transformer">
+Transformer model
+</h3> 
+ 
 ![image](https://github.com/Group-1-ET/English-telugu-Translation-System/assets/82363361/f276b721-93f5-4252-b97a-723dfa5825a1)
-#### Positional Encoding
+
+<h4 id="positional">
+Positional Encoding
+</h4> 
+
 Positional encoding is a technique used in Transformer-based models, such as the Transformer architecture used in BERT, to inject information about the positions of words or tokens into the input embeddings. This is crucial because these models do not inherently understand the order or position of words in a sequence since they process tokens in parallel rather than sequentially.
 <img width="893" alt="image" src="https://github.com/Group-1-ET/English-telugu-Translation-System/assets/82363361/b4b84ba6-0ca6-472f-a16c-d22400d67de1">
 ```python
@@ -163,8 +183,9 @@ plt.show()
 ```
 ![image](https://github.com/Group-1-ET/English-telugu-Translation-System/assets/82363361/d5a65bfa-d6e5-4b36-99bf-d936402ddf3d)
 
-
-#### Scaled Dot Product Attention (Part of Multi head attention)
+<h4 id="scaleddot">
+Scaled Dot Product Attention (Part of Multi head attention)
+</h4> 
 
 The attention function used by the transformer takes three inputs: Q (query), K (key), V (value). The equation used to calculate the attention weights is:
 
@@ -271,7 +292,9 @@ class MultiHeadAttention(tf.keras.layers.Layer):
     return output, attention_weights
 ```
 
-#### Encoder 
+<h4 id="encoder">
+Encoder
+</h4> 
 
 The encoder contains a stack of N encoder layers. Where each contains a GlobalSelfAttention and FeedForward layer
 The encoder takes each word in the input sentence, process it to an intermediate representation and compares it with all the other words in the input sentence. The result of those comparisons is an attention score that evaluates the contribution of each word in the sentence to the key word. The attention scores are then used as weights for words’ representations that are fed the fully-connected network that generates a new representation for the key word. It does so for all the words in the sentence and transfers the new representation to the decoder that by this information can have all the dependencies that it needs to build the predictions.
@@ -338,7 +361,9 @@ class Encoder(tf.keras.layers.Layer):
 
 ```
 
-#### Add and Norm 
+<h4 id="add">
+Add and Norm
+</h4> 
 
 These "Add & Norm" blocks are scattered throughout the model. Each one joins a residual connection and runs the result through a LayerNormalization layer.
 
@@ -346,12 +371,16 @@ The easiest way to organize the code is around these residual blocks.
 
 The residual "Add & Norm" blocks are included so that training is efficient. The residual connection provides a direct path for the gradient (and ensures that vectors are updated by the attention layers instead of replaced), while the normalization maintains a reasonable scale for the outputs.
 
-#### Feed Forward 
+<h4 id="feed">
+Feed Forward
+</h4> 
 
 The feedforward layer comprises two dense layers that are individually and uniformly applied to every position . The feedforward layer is primarily used to transform the representation of the input sequence into a more suitable form for the task at hand.
 This is achieved by applying a linear transformation followed by a non linear activation function. The output of the feed forward layer has the same shape as the input, which is then added to the original input
 
-#### Decoder
+<h4 id="decoder">
+Decoder
+</h4> 
 
 The decoder's stack is slightly more complex, with each DecoderLayer containing a CausalSelfAttention, a CrossAttention, and a FeedForward layer
 Similar to the Encoder, the Decoder consists of a PositionalEmbedding, and a stack of DecoderLayers
@@ -437,7 +466,9 @@ class Decoder(tf.keras.layers.Layer):
 
 ```
 
-#### Transformer
+<h4 id="transformermodel">
+Transformer
+</h4> 
 
 ```python
 class Transformer(tf.keras.Model):
@@ -470,7 +501,9 @@ class Transformer(tf.keras.Model):
 
 
 
-### 6. Training 
+<h3 id="training">
+Training
+</h3> 
 
 Achieved training accuracy is **98%** on **30th epoch**
 The train step is below
