@@ -39,6 +39,8 @@
 
 <p id="aim"> </p>
 
+
+
 <h2 >
 Aim
 </h2>
@@ -46,24 +48,40 @@ Aim
 This project aims to create a proficient English to Telugu translation system using transformer architectures in deep learning. By bridging language gaps, it enhances communication and accessibility, offering an advanced tool for seamless translation between English and Telugu.
 
 <p id="progress"> </p>
+
+
+
 <h2 >
  Progress of the project
 </h2>
 
 ![image](https://github.com/Group-1-ET/English-telugu-Translation-System/assets/82363361/4d255228-7bbd-49cd-9ed3-2c87c53c0d7f)
 
+<p id="steps"> </p>
 
-<h2 id="steps">
+
+
+<h2 >
 Steps
 </h2>
 
-<h3 id="dataset">
+
+<p id="dataset"> </p>
+
+
+
+<h3>
 Dataset
 </h3>
 
 https://github.com/himanshudce/Indian-Language-Dataset  (It has huge data for low resourced languages like Tamil, Malayalam, Telugu or Bengali)
 
-<h3 id="datacleaning">
+
+<p id="datacleaning"> </p>
+
+
+
+<h3 >
 Datacleaning
 </h3>
 
@@ -72,16 +90,34 @@ Datacleaning
 3. Removed these characters: {'$', ')', '?', '"', '’', '.',  '°', '!', ';', '/', "'", '€', '%', ':', ',', '('}
 4. Removed all the spacial characters: except space ' '
 
-<h3 id="vocabfile">
+
+<p id="vocabfile"> </p>
+
+
+
+<h3 >
 Creating Vocab file from our corpus
 </h3> 
 
 Now by the above mentioned preprocessing we create a vocab file from our dataset
 
-<h3 id="custom">
+
+<p id="custom"> </p>
+
+
+
+
+<h3 >
 Custom tokenizer (BERT in our case)
 </h3>  
-<h4 id="bert">
+
+
+<p id="bert"> </p>
+
+
+
+
+<h4 >
  Bert Tokeniser ( Bidirectional Encoder Representations )
 </h4>  
 
@@ -161,13 +197,21 @@ class CustomTokenizer(tf.Module):
 
 **Helper Function**s: Lastly, the code includes helper functions to retrieve metadata about the tokenizer. These functions allow users to obtain information such as the size of the vocabulary, the path to the vocabulary file, and the reserved tokens.
 
-<h3 id="transformer">
+
+<p id="transformer"> </p>
+
+
+
+<h3 >
 Transformer model
 </h3> 
  
 ![image](https://github.com/Group-1-ET/English-telugu-Translation-System/assets/82363361/f276b721-93f5-4252-b97a-723dfa5825a1)
 
-<h4 id="positional">
+
+<p id="positional"> </p>
+
+<h4 >
 Positional Encoding
 </h4> 
 
@@ -212,7 +256,12 @@ plt.show()
 ```
 ![image](https://github.com/Group-1-ET/English-telugu-Translation-System/assets/82363361/d5a65bfa-d6e5-4b36-99bf-d936402ddf3d)
 
-<h4 id="scaleddot">
+
+<p id="scaleddot"> </p>
+
+
+
+<h4 >
 Scaled Dot Product Attention (Part of Multi head attention)
 </h4> 
 
@@ -321,7 +370,11 @@ class MultiHeadAttention(tf.keras.layers.Layer):
     return output, attention_weights
 ```
 
-<h4 id="encoder">
+<p id="encoder"> </p>
+
+
+
+<h4 >
 Encoder
 </h4> 
 
@@ -390,7 +443,11 @@ class Encoder(tf.keras.layers.Layer):
 
 ```
 
-<h4 id="add">
+<p id="add"> </p>
+
+
+
+<h4 >
 Add and Norm
 </h4> 
 
@@ -400,14 +457,24 @@ The easiest way to organize the code is around these residual blocks.
 
 The residual "Add & Norm" blocks are included so that training is efficient. The residual connection provides a direct path for the gradient (and ensures that vectors are updated by the attention layers instead of replaced), while the normalization maintains a reasonable scale for the outputs.
 
-<h4 id="feed">
+
+<p id="feed"> </p>
+
+
+
+<h4>
 Feed Forward
 </h4> 
 
 The feedforward layer comprises two dense layers that are individually and uniformly applied to every position . The feedforward layer is primarily used to transform the representation of the input sequence into a more suitable form for the task at hand.
 This is achieved by applying a linear transformation followed by a non linear activation function. The output of the feed forward layer has the same shape as the input, which is then added to the original input
 
-<h4 id="decoder">
+
+<p id="decoder"> </p>
+
+
+
+<h4 >
 Decoder
 </h4> 
 
@@ -495,7 +562,11 @@ class Decoder(tf.keras.layers.Layer):
 
 ```
 
-<h4 id="transformermodel">
+<p id="transformermodel"> </p>
+
+
+
+<h4 >
 Transformer
 </h4> 
 
@@ -529,8 +600,11 @@ class Transformer(tf.keras.Model):
 ```
 
 
+<p id="training"> </p>
 
-<h3 id="training">
+
+
+<h3 >
 Training
 </h3> 
 
