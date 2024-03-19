@@ -37,15 +37,15 @@
    - [Go to Sixth step - Training ](#training)
 
 
-
-<h2 id="aim">
+<p id="aim"> </p>
+<h2 >
 Aim
 </h2>
 
 This project aims to create a proficient English to Telugu translation system using transformer architectures in deep learning. By bridging language gaps, it enhances communication and accessibility, offering an advanced tool for seamless translation between English and Telugu.
 
-
-<h2 id="progress">
+<p id="progress"> </p>
+<h2 >
  Progress of the project
 </h2>
 
