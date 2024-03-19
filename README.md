@@ -6,7 +6,35 @@
 
 [Go to Steps of the Project](#steps)
 
-[Go to First step - Dataset](#dataset)
+  - [Go to First step - Dataset](#dataset)
+
+  - [Go to Second step - Data Cleaning](#datacleaning)
+
+  - [Go to Third step - Creating Vocab file from corpus](#vocabfile)
+
+  - [Go to Fourth step - Custom tokenizer (BERT) ](#custom)
+
+     - [Go to sub step - BERT tokenizer](#bert)
+
+  - [Go to Fifth step - Transformer Model ](#transformer)
+
+     - [Go to sub step - Positional Encoding ](#positional)
+
+     - [Go to sub step - Scaled Dot Product Attention ](#scaleddot)
+
+     - [Go to sub step - Encoder ](#encoder)
+
+     - [Go to sub step - Add and Norm ](#add)
+
+     - [Go to sub step - Feed Forward ](#feed)
+
+     - [Go to sub step - Positional Encoding ](#positional)
+
+     - [Go to sub step - Decoder ](#decoder)
+
+     - [Go to sub step - Transformer ](#transformermodel)
+
+   - [Go to Sixth step - Training ](#training)
 
 
 
