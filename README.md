@@ -1,4 +1,10 @@
-# English to Telugu Translation System
+# English to Telugu Translation System using Transformers
+
+```diff
+@@ Prerequisites - Python, ML, NLP,Tensorflow, Transformers @@
+@@ Domain - Translation @@
+
+```
 
 [Go to Aim](#aim)
 
